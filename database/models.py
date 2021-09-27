@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date, ARRAY
 from sqlalchemy.orm import relationship
 
-from .database import Base
+from . import Base
 
 
 class User(Base):
@@ -24,7 +24,9 @@ class Application(Base):
     intern_phone_number = Column(Integer)
     applicant_information = Column(Integer)
     intern_user_object = relationship("User", back_populates="applications")
-    internship = relationship("Internship", back_populates="applications")
+    internship = relationship(
+        "Internship", uselist=False, back_populates="applications"
+    )
 
 
 class Internship(Base):
