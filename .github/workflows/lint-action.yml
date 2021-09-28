@@ -19,17 +19,16 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
         with:
-          node-version: 16
+          python-version: 3.8
 
-      # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
-        run: npm i .
+      - name: Install Python dependencies
+        run: pip install black flake8
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          eslint: true
-          prettier: true
+          black: true
+          flake8: true
