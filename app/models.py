@@ -1,7 +1,6 @@
+from app.database import Base
 from sqlalchemy import Column, Integer, String, Date, ARRAY
 from sqlalchemy.orm import relationship
-
-from . import Base
 
 
 class User(Base):

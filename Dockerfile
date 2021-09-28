@@ -1,10 +1,12 @@
-FROM python:3.7
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
-RUN pip install fastapi uvicorn sqlalchemy psycopg2 python-dotenv
-RUN mkdir /api
-EXPOSE 8080
+ENV PYTHONPATH "${PYTHONPATH}:/"
+ENV PORT=8000
 
-COPY ./* /api
-COPY ./routers /api/routers
+RUN pip install --upgrade pip
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8080"]
+COPY ./requirements.txt /app/
+
+RUN pip install -r requirements.txt
+
+COPY ./app /app
