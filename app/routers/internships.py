@@ -5,7 +5,6 @@ from sqlalchemy.orm.session import Session
 from app.crud.read.internships import get_users
 from app.database import SessionLocal, engine
 from app.models import Base
-from fastapi import APIRouter
 
 
 Base.metadata.create_all(bind=engine)
