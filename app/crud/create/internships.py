@@ -17,4 +17,5 @@ def create_internship(internship_data: InternshipSchema, db: Session):
     )
     db.add(internship_instance)
     db.commit()
+    db.refresh(internship_instance)
     return internship_instance

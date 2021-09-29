@@ -1,11 +1,11 @@
 from app.schemas import InternshipSchema
 from fastapi.param_functions import Depends
 from fastapi.routing import APIRouter
-from fastapi import HTTPException
 from sqlalchemy.orm.session import Session
 from app.crud.read.internships import get_users
 from app.database import SessionLocal, engine
 from app.models import Base
+from fastapi import APIRouter
 
 
 Base.metadata.create_all(bind=engine)
@@ -47,6 +47,7 @@ async def new_internship(
     except Exception as err:
         return {
             "message": "Bad Data",
-            "internship": f"Bad data. The Error is: {err} and the data you sent is {internship}",
+            "internship": f"Bad data. The Error is: {err}\
+                    and the data you sent is {internship}",
             "status_code": 400,
         }
