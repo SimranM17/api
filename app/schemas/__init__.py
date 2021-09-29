@@ -4,12 +4,12 @@ from typing import List, Optional
 from datetime import date
 
 
-class part_time_or_full_time(str, Enum):
+class PartTimeOrFullTime(str, Enum):
     part_time = "part_time"
     full_time = "full_time"
 
 
-class Application_schema(BaseModel):
+class ApplicationSchema(BaseModel):
     id: int
 
     intern_name: str
@@ -25,26 +25,26 @@ class Application_schema(BaseModel):
         orm_mode = True
 
 
-class User_schema(BaseModel):
+class UserSchema(BaseModel):
     id: int
     name: str
     email: str
     picture: str
 
-    applications: Optional[List[Application_schema]]
+    applications: Optional[List[ApplicationSchema]]
 
     class Config:
         orm_mode = True
 
 
-class Internships_schema(BaseModel):
+class InternshipSchema(BaseModel):
     id: Optional[int]
 
     position_title: str
     company_name: str
     description: str
 
-    part_time_or_full_time: part_time_or_full_time
+    part_time_or_full_time: PartTimeOrFullTime
     location: str
     skills: List[str]
 
@@ -52,7 +52,7 @@ class Internships_schema(BaseModel):
     expires_on: date
 
     application_id: int
-    applications: Optional[List[Application_schema]]
+    applications: Optional[List[ApplicationSchema]]
 
     class Config:
         orm_mode = True

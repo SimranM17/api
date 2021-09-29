@@ -1,4 +1,4 @@
-from app.schemas import Internships_schema
+from app.schemas import InternshipSchema
 from fastapi.param_functions import Depends
 from fastapi.routing import APIRouter
 from fastapi import HTTPException
@@ -33,15 +33,20 @@ async def read_internships(db: Session = Depends(get_db)):
 
 @internships_router.post("/new-internship", response_model=dict)
 async def new_internship(
-    internship: Internships_schema,
+    internship: InternshipSchema,
     db: Session = Depends(get_db),
 ):
-    Internships_schema.json
     try:
         # Internships_schema.validate(internship)
-        return new_internship(internship=internship, db=db)
+        await new_internship(internship=internship, db=db)
+        return {
+            "message": "created-internship",
+            "internship": internship,
+            "status_code": 200,
+        }
     except Exception as err:
-        HTTPException(
-            status_code=400,
-            detail=f"Bad data. The Error is: {err} and the data you sent is {internship}",
-        )
+        return {
+            "message": "Bad Data",
+            "internship": f"Bad data. The Error is: {err} and the data you sent is {internship}",
+            "status_code": 400,
+        }
