@@ -17,6 +17,7 @@ class Application_schema(BaseModel):
     intern_email: int
 
     internship_id: int
+    user_id: int
 
     applicant_information: str
 
@@ -29,8 +30,8 @@ class User_schema(BaseModel):
     name: str
     email: str
     picture: str
+
     applications: Optional[List[Application_schema]]
-    applications_id: int
 
     class Config:
         orm_mode = True

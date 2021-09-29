@@ -13,8 +13,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     picture = Column(String)
 
-    applications_id = Column(Integer, ForeignKey("applications.id"))
-    applications = relationship("Application", back_populates="intern_user_object")
+    applications = relationship("Application")
 
 
 class Application(Base):
@@ -25,12 +24,11 @@ class Application(Base):
     intern_name = Column(String, index=True)
     intern_phone_number = Column(Integer)
 
-    intern_user_object = relationship("User", back_populates="applications")
-    internship = relationship(
-        "Internships", uselist=False, back_populates="applications"
-    )
-
     applicant_information = Column(String)
+
+    internship_id = Column(Integer, ForeignKey("internships.id"))
+
+    user_id = Column(Integer, ForeignKey("users.id"))
 
 
 class Internships(Base):
@@ -49,8 +47,7 @@ class Internships(Base):
     number_of_openings = Column(Integer)
     expires_on = Column(Date, index=True)
 
-    application_id = Column(Integer, ForeignKey("applications.id"))
-    applications = relationship("Application", back_populates="internship")
+    applications = relationship("Application")
 
 
 class Api_keys(Base):

@@ -2,7 +2,7 @@ from fastapi.param_functions import Depends
 from fastapi.routing import APIRouter
 from sqlalchemy.orm.session import Session
 from app.crud.read.internships import get_users
-from app.schemas import User_schema
+from app.schemas import Internships_schema, User_schema
 from typing import List
 from app.database import SessionLocal, engine
 from app.models import Base
@@ -26,6 +26,6 @@ internships_router = APIRouter(
 )
 
 
-@internships_router.get("/")
+@internships_router.get("/", response_model=dict)
 async def read_internships(db: Session = Depends(get_db)):
     return get_users(db)
