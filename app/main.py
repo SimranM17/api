@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers.internships import internships_router
 
 from app.core.config import settings
 
@@ -19,6 +20,8 @@ def get_application():
 
 
 app = get_application()
+
+app.include_router(internships_router)
 
 
 @app.get("/")
