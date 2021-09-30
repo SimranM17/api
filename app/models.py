@@ -4,7 +4,7 @@ from sqlalchemy import Column, Integer, String, Date, ARRAY
 from sqlalchemy.orm import relationship
 
 
-class User(Base):
+class UserModel(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -13,10 +13,10 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     picture = Column(String)
 
-    applications = relationship("Application")
+    applications = relationship("ApplicationModel")
 
 
-class Application(Base):
+class ApplicationModel(Base):
     __tablename__ = "applications"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -31,7 +31,7 @@ class Application(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
 
-class Internships(Base):
+class InternshipModel(Base):
     __tablename__ = "internships"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -47,10 +47,10 @@ class Internships(Base):
     number_of_openings = Column(Integer)
     expires_on = Column(Date, index=True)
 
-    applications = relationship("Application")
+    applications = relationship("ApplicationModel")
 
 
-class Api_keys(Base):
+class ApiKeysModel(Base):
     __tablename__ = "api_keys"
 
     id = Column(Integer, primary_key=True, index=True)

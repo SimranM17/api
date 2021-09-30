@@ -1,3 +1,4 @@
+import app.crud.create as create
 from app.schemas import InternshipSchema
 from fastapi.param_functions import Depends
 from fastapi.routing import APIRouter
@@ -37,7 +38,7 @@ async def new_internship(
 ):
     try:
         # Internships_schema.validate(internship)
-        await new_internship(internship=internship, db=db)
+        await create.create_internship(internship_data=internship, db=db)
         return {
             "message": "created-internship",
             "internship": internship,

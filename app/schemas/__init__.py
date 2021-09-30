@@ -52,7 +52,7 @@ class InternshipSchema(BaseModel):
     expires_on: date
 
     application_id: int
-    applications: Optional[List[ApplicationSchema]]
+    applications: List[ApplicationSchema]
 
     class Config:
         orm_mode = True

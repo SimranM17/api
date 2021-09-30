@@ -1,10 +1,13 @@
-from app.models import Internships
+from app.models import ApplicationModel, InternshipModel
 from sqlalchemy.orm.session import Session
 from app.schemas import InternshipSchema
 
 
 def create_internship(internship_data: InternshipSchema, db: Session):
-    internship_instance = Internships(
+    for i in internship_data.applications:
+        application = internship_data.applications[i]
+        internship_data.applications[i] = ApplicationModel(application)
+    internship_instance = InternshipModel(
         position_title=internship_data.position_title,
         company_name=internship_data.company_name,
         part_time_or_full_time=internship_data.part_time_or_full_time,
