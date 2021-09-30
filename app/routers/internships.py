@@ -38,7 +38,7 @@ async def new_internship(
 ):
     try:
         # Internships_schema.validate(internship)
-        await create.create_internship(internship_data=internship, db=db)
+        await create.internship(internship_data=internship, db=db)
         return {
             "message": "created-internship",
             "internship": internship,
