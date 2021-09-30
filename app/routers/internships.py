@@ -3,7 +3,7 @@ from app.schemas import InternshipSchema
 from fastapi.param_functions import Depends
 from fastapi.routing import APIRouter
 from sqlalchemy.orm.session import Session
-from app.crud.read.internships import get_users
+import app.crud.read as read
 from app.database import SessionLocal, engine
 from app.models import Base
 
@@ -26,9 +26,9 @@ internships_router = APIRouter(
 )
 
 
-@internships_router.get("/read-all", response_model=dict)
+@internships_router.get("/read-all")
 async def read_internships(db: Session = Depends(get_db)):
-    return get_users(db)
+    return read.internships(db)
 
 
 @internships_router.post("/new-internship", response_model=dict)
@@ -38,7 +38,7 @@ async def new_internship(
 ):
     try:
         # Internships_schema.validate(internship)
-        await create.internship(internship_data=internship, db=db)
+        create.internship(internship_data=internship, db=db)
         return {
             "message": "created-internship",
             "internship": internship,
@@ -48,6 +48,6 @@ async def new_internship(
         return {
             "message": "Bad Data",
             "internship": f"Bad data. The Error is: {err}\
-                    and the data you sent is {internship}",
+            and the data you sent is {internship}",
             "status_code": 400,
         }

@@ -31,7 +31,7 @@ class UserSchema(BaseModel):
     email: str
     picture: str
 
-    applications: Optional[List[ApplicationSchema]]
+    applications: List[ApplicationSchema] or None
 
     class Config:
         orm_mode = True
@@ -52,7 +52,7 @@ class InternshipSchema(BaseModel):
     expires_on: date
 
     application_id: int
-    applications: List[ApplicationSchema]
+    applications: List[ApplicationSchema] or None
 
     class Config:
         orm_mode = True

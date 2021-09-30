@@ -4,9 +4,15 @@ from app.schemas import InternshipSchema
 
 
 def create_internship(internship_data: InternshipSchema, db: Session):
-    for i in internship_data.applications:
-        application = internship_data.applications[i]
-        internship_data.applications[i] = ApplicationModel(application)
+    application_ids = [i.id for i in internship_data.applications]
+    applications = []
+    for i in application_ids:
+        application = db.query(ApplicationModel)
+        if application:
+            for j in application.all():
+                if j.id == i:
+                    applications.append(j)
+
     internship_instance = InternshipModel(
         position_title=internship_data.position_title,
         company_name=internship_data.company_name,
@@ -16,7 +22,7 @@ def create_internship(internship_data: InternshipSchema, db: Session):
         number_of_openings=internship_data.number_of_openings,
         description=internship_data.description,
         expires_on=internship_data.expires_on,
-        applications=internship_data.applications,
+        applications=applications,
     )
     db.add(internship_instance)
     db.commit()
