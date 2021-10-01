@@ -6,10 +6,10 @@
 The API for InternNova: the future of internships</h1>
 <br>
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.1">
+  <img src="https://img.shields.io/badge/version-0.0.1--beta-green">
   <img src="https://img.shields.io/github/license/InternNova-Labs/api">
   <img src="https://img.shields.io/tokei/lines/github/InternNova-Labs/api?label=lines%20of%20code">
-  <img src="https://img.shields.io/github/languages/top/https://github.com/InternNova-Labs/api/api">
+  <img src="https://img.shields.io/github/languages/top/InternNova-Labs/api">
   <img src="https://img.shields.io/github/repo-size/InternNova-Labs/api">
 </p>
 <br>
