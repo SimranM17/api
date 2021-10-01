@@ -1,7 +1,8 @@
 import bcrypt from 'bcryptjs';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { JobApplication } from './JobApplication';
 
-import { Role, Language } from './types';
+type Role = 'ADMINISTRATOR' | 'STANDARD';
 
 @Entity('users')
 export class User {
@@ -22,6 +23,10 @@ export class User {
   })
   username: string;
 
+  @Column()
+  @OneToMany(() => JobApplication, (jobApplication: JobApplication) => jobApplication.internInformation)
+  jobApplications: JobApplication;
+
   @Column({
     nullable: true,
   })
@@ -33,12 +38,6 @@ export class User {
   })
   role: string;
 
-  @Column({
-    default: 'en-US' as Language,
-    length: 15,
-  })
-  language: string;
-
   @Column()
   @CreateDateColumn()
   created_at: Date;
@@ -46,10 +45,6 @@ export class User {
   @Column()
   @UpdateDateColumn()
   updated_at: Date;
-
-  setLanguage(language: Language) {
-    this.language = language;
-  }
 
   hashPassword() {
     this.password = bcrypt.hashSync(this.password, 8);
