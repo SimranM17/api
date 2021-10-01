@@ -61,28 +61,6 @@ yarn run dev
 
 [![Forkers repo roster for yourrepourl](https://reporoster.com/forks/InternNova-Labs/api)](https://github.com/yourrepourl/network/members)
 
-<br>
-
-%% ## :hammer: Build Status
-%% ## :hammer: Build Status
-%% | Feature | Build Status |
-%% |------------------------------------|----------------|
-%% | Installation | ‚úÖ |
-%% | Portable Installation | ‚úÖ |
-%% | Uninstallation | ‚úÖ |
-%% | Update | ‚úÖ |
-%% | Show | ‚úÖ |
-%% | List | ‚úÖ |
-%% | Search | ‚úÖ |
-%% | Code Editor Extension Installation | ‚úÖ |
-%% | Python Package Installation | ‚úÖ |
-%% | NodeJS Package Installation | ‚úÖ |
-%% | Configuration Management | ‚úÖ |
-%% | Cleanup | ‚úÖ |
-%% | Tab Completion | ‚úÖ |
-
-<br>
-
 ## Authors
 
 - [samrath2007](https://github.com/samrath2007) - Lead author
