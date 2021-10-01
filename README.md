@@ -1,76 +1,100 @@
-# Express / TypeScript / TypeORM RESTful API boilerplate
+<p align="center">
+  <img src="https://github.com/InternNova-Labs/web/blob/main/public/images/logo.png?raw=true" />
+</p>
+<h1 align="center">InternNova API</h1>
+<h4 align="center">
+The API for InternNova: the future of internships</h1>
+<br>
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.0.1">
+  <img src="https://img.shields.io/github/license/InternNova-Labs/api">
+  <img src="https://img.shields.io/tokei/lines/github/InternNova-Labs/api?label=lines%20of%20code">
+  <img src="https://img.shields.io/github/languages/top/https://github.com/InternNova-Labs/api/api">
+  <img src="https://img.shields.io/github/repo-size/InternNova-Labs/api">
+</p>
+<br>
 
-![Heisenberg](heisenberg.jpg)
+InternNova helps high school students build their profile, enhance their skills, and increase their chances of getting admitted into top colleges. Find internships today!
 
-[![CI][build-badge]][build-url]
-[![TypeScript][typescript-badge]][typescript-url]
-[![prettier][prettier-badge]][prettier-url]
+**Note**: Bugs are currently quite prone since the project is an alpha stage.
+<br>
 
-Minimal boilerplate for building RESTful APIs with JWT authentication and role based authorization using Express, TypeScript, TypeORM, Postgres & Docker with focus on best practices and painless developer experience.
+# :zap: Installation
 
-## Requirements
+Any steps you need to run before installation or important notes.
+<br>
 
-- [Node v14+](https://nodejs.org/)
-- [Docker](https://www.docker.com/)
+## Build From Source
 
-## Running
+Prerequisites: **Git**, **Node.js**
+**Note**: Our package manager of choice is yarn until [volt](https://github.com/voltpkg/volt) comes out
 
-_Easily set up a local development environment with single command!_
+1. Clone the github repository using the Git CLI.
 
-- clone the repo
-- `npm run docker:dev` 🚀
+```sh
+git clone https://github.com/InternNova-Labs/api
+```
 
-Visit [localhost:4000](http://localhost:4000/) or if using Postman grab [config](/postman).
+2. Change to the project directory.
 
-### _What happened_ 💥
+```sh
+cd api
+```
 
-Two docker containers are created:
+3. Install dependencies
 
-- one container instance with Postgres database seeded with 💊 Breaking Bad characters in `Users` table. Postgres database default credentials are `user=walter`, `password=white`, that can be modified in [.env file](./.env) (not added to .gitignore for demo purposes).
-- and one Node (v14 Alpine) container instance with running boilerplate RESTful API service.
+```sh
+yarn
+```
 
-## Features:
+4. Fill in appropriate values in the .env file
 
-- [Express](https://github.com/expressjs/express) framework
-- [TypeScript v4](https://github.com/microsoft/TypeScript) codebase
-- [TypeORM](https://typeorm.io/) using Data Mapper pattern
-- [Docker](https://www.docker.com/) environment:
-  - Easily start local development using [Docker Compose](https://docs.docker.com/compose/) with single command `npm run docker:dev`
-  - Connect to different staging or production environments `npm run docker:[stage|prod]`
-  - Ready for **microservices** development and deployment.  
-    Once API changes are made, just build and push new docker image with your favourite CI/CD tool  
-    `docker build -t <username>/api-boilerplate:latest .`  
-    `docker push <username>/api-boilerplate:latest`
-- Contract first REST API design:
-  - never break API again with HTTP responses and requests payloads using [type definitions](./src/types/express/index.d.ts)
-  - Consistent schema error [response](./src/utils/response/custom-error/types.ts). Your frontend will always know how to handle errors thrown in `try...catch` statements 💪
-- JWT authentication and role based authorization using custom middleware
-- Set local, stage or production [environmental variables](./config) with [type definitions](./src/types/ProcessEnv.d.ts)
-- Logging with [morgan](https://github.com/expressjs/morgan)
-- Unit and integration tests with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/)
-- Linting with [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/) code formatter
-- Git hooks with [Husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged)
-- Automated npm & Docker dependency updates with [Renovate](https://github.com/renovatebot/renovate) (patch version only)
-- Commit messages must meet [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) format.  
-  After staging changes just run `npm run commit` and get instant feedback on your commit message formatting and be prompted for required fields by [Commitizen](https://github.com/commitizen/cz-cli)
+5. Run the api
 
-## Other awesome boilerplates:
+```
+yarn run dev
+```
 
-Each boilerplate comes with it's own flavor of libraries and setup, check out others:
+## :clap: Supporters
 
-- [Express and TypeORM with TypeScript](https://github.com/typeorm/typescript-express-example)
-- [Node.js, Express.js & TypeScript Boilerplate for Web Apps](https://github.com/jverhoelen/node-express-typescript-boilerplate)
-- [Express boilerplate for building RESTful APIs](https://github.com/danielfsousa/express-rest-es2017-boilerplate)
-- [A delightful way to building a RESTful API with NodeJs & TypeScript by @w3tecch](https://github.com/w3tecch/express-typescript-boilerplate)
+[![Stargazers repo roster for yourrepourl](https://reporoster.com/stars/InternNova-Labs/api)](https://github.com/yourrepourl/stargazers)
 
-[build-badge]: https://github.com/mkosir/express-typescript-typeorm-boilerplate/actions/workflows/main.yml/badge.svg
-[build-url]: https://github.com/mkosir/express-typescript-typeorm-boilerplate/actions/workflows/main.yml
-[typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
-[typescript-url]: https://github.com/microsoft/TypeScript
-[prettier-badge]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
-[prettier-url]: https://github.com/prettier/prettier
+[![Forkers repo roster for yourrepourl](https://reporoster.com/forks/InternNova-Labs/api)](https://github.com/yourrepourl/network/members)
 
-## Contributing
+<br>
 
-All contributions are welcome! 
+%% ## :hammer: Build Status
+%% ## :hammer: Build Status
+%% | Feature | Build Status |
+%% |------------------------------------|----------------|
+%% | Installation | ‚úÖ |
+%% | Portable Installation | ‚úÖ |
+%% | Uninstallation | ‚úÖ |
+%% | Update | ‚úÖ |
+%% | Show | ‚úÖ |
+%% | List | ‚úÖ |
+%% | Search | ‚úÖ |
+%% | Code Editor Extension Installation | ‚úÖ |
+%% | Python Package Installation | ‚úÖ |
+%% | NodeJS Package Installation | ‚úÖ |
+%% | Configuration Management | ‚úÖ |
+%% | Cleanup | ‚úÖ |
+%% | Tab Completion | ‚úÖ |
+
+<br>
+
+## Authors
+
+- [samrath2007](https://github.com/samrath2007) - Lead author
+
+See also the list of [contributors](https://github.com/api/contributors) who contributed to this.
+
+## Built With
+
+- [Express](https://expressjs.com/)
+- [TypeORM](https://typeorm.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+
+## License
+
+This project is licensed under the MIT license - see the [LICENSE.md](LICENSE) file for details.
