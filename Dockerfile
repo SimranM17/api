@@ -1,15 +1,16 @@
-FROM python:3.7
+FROM node:14.17.6-alpine
 
-RUN pip install fastapi uvicorn sqlalchemy psycopg2 python-dotenv
-RUN mkdir /api
-EXPOSE 8080
+WORKDIR /app
 
-RUN pip install --upgrade pip
+COPY ./package.json .
+COPY ./package-lock.json .
 
-COPY ./requirements.txt /app/
+RUN npm install && npm cache clean --force
 
-RUN pip install -r /app/requirements.txt
+COPY . .
 
-COPY ./app /app
+RUN npm run build
 
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+EXPOSE 4000
+
+CMD [ "npm", "start" ]
