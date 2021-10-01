@@ -1,10 +1,30 @@
-version: '3'
+version: '3.7'
 
 services:
-  be_boilerplate:
-    container_name: 'be_boilerplate'
-    build: .
-    restart: always
+  internnova-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=internnova
+
+  db:
+    image: postgres:12.0-alpine
     volumes:
-      - .:/app/
-      - /app/node_modules
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=internnova
+    expose:
+      - 5432
+
+volumes:
+  postgres_data:

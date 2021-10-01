@@ -1,25 +1,20 @@
-import 'dotenv/config';
-import 'reflect-metadata';
-import fs from 'fs';
-import path from 'path';
-
-import bodyParser from 'body-parser';
 import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
+import fs from 'fs';
 import helmet from 'helmet';
 import morgan from 'morgan';
-
-import './utils/response/customSuccess';
+import path from 'path';
+import 'reflect-metadata';
 import { errorHandler } from './middleware/errorHandler';
 import { getLanguage } from './middleware/getLanguage';
 import routes from './routes';
 import { dbCreateConnection } from './typeorm/dbCreateConnection';
+import './utils/response/customSuccess';
 
 export const app = express();
 app.use(cors());
 app.use(helmet());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(getLanguage);
 
 try {
