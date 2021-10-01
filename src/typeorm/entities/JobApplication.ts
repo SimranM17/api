@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn, ManyToOne } from 'typeorm';
 import { Company } from './Company';
-import { User } from './users/User';
+import { User } from './User';
 
 @Entity()
 export class JobApplication {

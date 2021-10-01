@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { JobApplication } from './JobApplication';
 
-type Role = 'ADMINISTRATOR' | 'STANDARD';
+export type Role = 'ADMINISTRATOR' | 'STANDARD';
 
 @Entity('users')
 export class User {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { User } from 'typeorm/entities/users/User';
+import { User } from 'typeorm/entities/User';
 import { CustomError } from 'utils/response/custom-error/CustomError';
 
 export const show = async (req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +10,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
   const userRepository = getRepository(User);
   try {
     const user = await userRepository.findOne(id, {
-      select: ['id', 'username', 'name', 'email', 'role', 'language', 'created_at', 'updated_at'],
+      select: ['id', 'username', 'name', 'email', 'role', 'created_at', 'updated_at'],
     });
 
     if (!user) {
